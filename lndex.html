@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Floating Expressionist Skull Chatbot</title>
+<style>
+    body {
+        background: #000;
+        color: #ccc;
+        font-family: monospace;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #wrapper {
+        width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    #ascii-skull-container {
+        width: 800px;
+        height: 320px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        margin-bottom: 20px;
+        padding-left: 200px; /* Added padding to move skull right */
+    }
+
+    #ascii-skull {
+        white-space: pre;
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    #toolbar,
+    #messages,
+    #user-input {
+        width: 780px;
+        margin: 0 auto 10px auto;
+        padding-left: 20px;
+    }
+
+    #toolbar {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        background: #222;
+        padding: 5px 10px;
+        border: 1px solid #444;
+    }
+
+    #toolbar select, #toolbar button {
+        background: #222;
+        color: #fff;
+        border: 1px solid #444;
+        padding: 5px 10px;
+        font-family: monospace;
+        cursor: pointer;
+    }
+
+    #messages {
+        background: #111;
+        padding: 10px;
+        height: 300px;
+        border: 1px solid #444;
+        overflow-y: auto;
+        text-align: left;
+    }
+    #user-input {
+        width: 700px;
+        height: 100px;
+        padding: 10px;
+        padding-left: 20px;
+        background: #222;
+        border: 1px solid #444;
+        color: #fff;
+        resize: vertical;
+        text-align: left;
+    }
+
+    .message-user {
+        color: #9cf;
+        text-align: left;
+    }
+
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+    <h1>Floating Expressionist Skull Chatbot</h1>
+
+    <!-- Templates for each ASCII skull variant -->
+    <template id="skull-idle">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | )(_o/  \o_)( |
+     |/     --    \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-talking-open">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | )  o    o  ( |
+     |/     --     \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+      
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-talking-closed">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | )  o    o  ( |
+     |/     --     \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-blink">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | ) ---  --- ( |
+     |/     --    \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-look-left">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | ) 0    0     |
+     |/     --     \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-look-right">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | )   0     0  |
+     |/     --     \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-look-center">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | )  0     0   |
+     |/     --     \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-look-surprised">
+          ______
+       .-'      `-.
+      /  .-.  .-.  \
+     |,            ,|
+     | )  0     0   |
+     |/     --     \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+    <template id="skull-smoking-closed">
+
+           ______      
+         ;       ~~ \
+         |           ;
+     ,--------,______|---.
+    /          \-----`    \    
+    `.__________`-_______-'             
+        |,   --    -- ,|
+        | )  0     0   |
+        |/     --     \|
+        (_     ^^     _)
+         \__|IIIIII|__/
+                   (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے
+         |  \IIIIII/ |
+          \          /
+           `--------`
+    </template>
+
+    <template id="skull-smoking-open">
+
+           ______      
+         ;       ~~ \
+         |           ;
+     ,--------,______|---.
+    /          \-----`    \    
+    `.__________`-_______-'             
+        |,   --    -- ,|
+        | )  0     0   |
+        |/     --     \|
+        (_     ^^     _)
+         \__|IIIIII|__/
+                    (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے
+                
+         |  \IIIIII/ |
+          \          /
+           `--------`
+    </template>
+
+    <template id="skull-shocked">
+          _____
+       .-'      `-.
+      /  .-.        \
+     |,       .-.  ,|
+     | )  o    O  ( |
+     |/            \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-blushing">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | )   .    .  (|
+     |/   _     _  \|
+     (_     ^^    _)
+      \__|IIIIII|__/
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <template id="skull-winking">
+          ______
+       .-'      `-.
+      /            \
+     |,  .-.  .-.  ,|
+     | )  ^    o_)( |
+     |/     --     \|
+     (_     ^^     _)
+      \__|IIIIII|__/
+       | \IIIIII/ |
+       \          /
+        `--------`
+    </template>
+
+    <div id="ascii-skull-container">
+        <pre id="ascii-skull"></pre>
+    </div>
+
+    <div id="toolbar">
+        <select id="avatar-select">
+            <option value="mistral" selected>Mistral Avatar</option>
+            <option value="curious">Curious Avatar</option>
+            <option value="irritated">Irritated Avatar</option>
+            <option value="melancholic">Melancholic Avatar</option>
+            <option value="playful">Playful Avatar</option>
+            <option value="thoughtful">Thoughtful Avatar</option>
+        </select>
+        <button id="voice-toggle">Enable Voice</button>
+        <button id="clear-chat">Clear Conversation</button>
+    </div>
+
+    <div id="messages"></div>
+    <textarea id="user-input" placeholder="Ask the skull anything..."></textarea>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+// Retrieve ASCII art from a template
+function getRawSkullArt(id) {
+    const t = document.getElementById(id);
+    return t.innerHTML;
+}
+
+// Add all your variants here
+const variants = [
+    "skull-idle",
+    "skull-talking-open",
+    "skull-talking-closed",
+    "skull-blink",
+    "skull-look-left",
+    "skull-look-right", 
+    "skull-look-center",
+    "skull-look-surprised",
+    "skull-smoking-closed",
+    "skull-smoking-open",
+    "skull-shocked",
+    "skull-blushing",
+    "skull-winking"
+];
+
+const skullArts = variants.map(v => getRawSkullArt(v).split('\n'));
+
+// Determine max lines and max width
+const maxLines = Math.max(...skullArts.map(a => a.length));
+let maxWidth = 0;
+skullArts.forEach(a => {
+    a.forEach(line => {
+        if (line.length > maxWidth) maxWidth = line.length;
+    });
+});
+
+// Function to pad lines
+function padLines(lines, lineCount, width) {
+    const padded = [...lines];
+    while (padded.length < lineCount) padded.push('');
+    return padded.map(line => line + ' '.repeat(width - line.length));
+}
+
+// Store padded variants
+const paddedArts = {};
+variants.forEach((v, i) => {
+    paddedArts[v] = padLines(skullArts[i], maxLines, maxWidth);
+});
+
+let currentSkull = "skull-idle";
+
+let isSmokingMode = false;
+const asciiSkull = document.getElementById('ascii-skull');
+asciiSkull.textContent = paddedArts[currentSkull].join('\n');
+
+const input = document.getElementById('user-input');
+const messagesDiv = document.getElementById('messages');
+const avatarSelect = document.getElementById('avatar-select');
+const clearChatBtn = document.getElementById('clear-chat');
+
+let talkingInterval = null;
+let isWaitingForResponse = false;
+let isIdle = true; // Track if skull is idle
+
+function showSkull(expression) {
+    asciiSkull.textContent = paddedArts[expression].join('\n');
+}
+
+function startTalkingAnimation() {
+    isIdle = false;
+    if (talkingInterval) return;
+    let showOpen = true;
+    const talkOpen = isSmokingMode ? "skull-smoking-open" : "skull-talking-open";
+    const talkClosed = isSmokingMode ? "skull-smoking-closed" : "skull-talking-closed";
+    talkingInterval = setInterval(() => {
+        showSkull(showOpen ? talkOpen : talkClosed);
+        showOpen = !showOpen;
+    }, 500);
+}
+
+function stopTalkingAnimation() {
+    if (talkingInterval) {
+        clearInterval(talkingInterval);
+        talkingInterval = null;
+    }
+    showSkull(isSmokingMode ? "skull-smoking-closed" : "skull-idle");
+    setTimeout(() => {
+        isIdle = true;
+    }, 2000);
+}
+
+function addMessage(sender, text) {
+    const msg = document.createElement('div');
+    msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+    msg.classList.add(sender === 'You' ? 'message-user' : 'message-skull');
+    messagesDiv.appendChild(msg);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// Check if message contains cowboy/country themes
+function checkForCowboyThemes(text) {
+    const cowboyTerms = ['cowboy', 'country', 'farm', 'ranch', 'horse', 'cattle', 'yeehaw'];
+    return cowboyTerms.some(term => text.toLowerCase().includes(term));
+}
+
+// Check if message is non-cowboy themed
+function checkForNonCowboyThemes(text) {
+    const nonCowboyTerms = ['computer', 'city', 'technology', 'internet', 'phone', 'modern', 'digital'];
+    return nonCowboyTerms.some(term => text.toLowerCase().includes(term));
+}
+
+// Idle animations: blink or look around every 10s if idle and not waiting for response
+function performIdleAnimation() {
+    if (isIdle && !isWaitingForResponse) {
+        if (isSmokingMode) {
+            showSkull("skull-smoking-closed");
+            return;
+        }
+        
+        const actions = ["blink", "look-around"];
+        const choice = actions[Math.floor(Math.random() * actions.length)];
+
+        if (choice === "blink") {
+            showSkull("skull-blink");
+            setTimeout(() => showSkull("skull-idle"), 1000);
+        } else {
+            // look-around sequence
+            const leftFirst = Math.random() < 0.5;
+            const seq = leftFirst
+                ? ["skull-look-left", "skull-look-center", "skull-look-right", "skull-look-center"]
+                : ["skull-look-right", "skull-look-center", "skull-look-left", "skull-look-center"];
+
+            let i = 0;
+            const step = () => {
+                if (!isIdle || isWaitingForResponse) {
+                    showSkull(isSmokingMode ? "skull-smoking-closed" : "skull-idle");
+                    return;
+                }
+                showSkull(seq[i]);
+                i++;
+                if (i < seq.length) {
+                    setTimeout(step, 700);
+                }
+            };
+            step();
+        }
+    }
+}
+
+setInterval(performIdleAnimation, 10000);
+
+input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        const query = input.value.trim();
+        if (query) {
+            addMessage('You', query);
+            input.value = '';
+
+            // Check for cowboy themes to activate smoking mode
+            if (checkForCowboyThemes(query)) {
+                isSmokingMode = true;
+            }
+            // Only deactivate smoking mode if explicitly non-cowboy themed
+            else if (checkForNonCowboyThemes(query)) {
+                isSmokingMode = false;
+            }
+            // Otherwise maintain current smoking mode state
+
+            const avatar = avatarSelect.value;
+            isWaitingForResponse = true;
+            startTalkingAnimation();
+
+            fetch('http://localhost:8000/ask', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({query, avatar})
+            })
+            .then(response => response.json())
+            .then(data => {
+                isWaitingForResponse = false;
+                stopTalkingAnimation();
+                addMessage('Skull', data.response);
+            })
+            .catch(err => {
+                isWaitingForResponse = false;
+                stopTalkingAnimation();
+                addMessage('Skull', 'Error: ' + err);
+            });
+        }
+    }
+});
+
+clearChatBtn.addEventListener('click', () => {
+    messagesDiv.innerHTML = '';
+});
+
+// Initialize voice features
+const socket = io('http://localhost:8001', {
+    transports: ['websocket', 'polling'],  // Allow fallback to polling
+    cors: {
+        origin: "http://localhost:8000",
+        methods: ["GET", "POST"]
+    },
+    reconnection: true,        // Enable reconnection
+    reconnectionAttempts: 5,   // Try 5 times
+    reconnectionDelay: 1000    // Wait 1 second between attempts
+});
+
+// Add connection event handlers
+socket.on('connect', () => {
+    console.log('Connected to voice server');
+});
+
+socket.on('connect_error', (error) => {
+    console.log('Connection error:', error);
+});
+
+socket.on('disconnect', () => {
+    console.log('Disconnected from voice server');
+});
+
+const synth = window.speechSynthesis;
+
+socket.on('speak', data => {
+    console.log('Received speak event:', data);
+    if (voiceEnabled) {
+        const utterance = new SpeechSynthesisUtterance(data.text);
+        utterance.rate = 0.85;  // Even slower for clarity
+        utterance.pitch = 0.6;  // Much deeper, more skull-like
+        utterance.volume = 1.0;
+        
+        // Get available voices and select a deeper one if available
+        const voices = synth.getVoices();
+        const preferredVoice = voices.find(voice => 
+            voice.name.includes('Male') || 
+            voice.name.includes('Deep') || 
+            voice.name.toLowerCase().includes('uk')  // British voices tend to be clearer
+        );
+        if (preferredVoice) {
+            utterance.voice = preferredVoice;
+        }
+        
+        utterance.onend = () => {
+            console.log('Speech ended');
+            socket.emit('speech_ended');
+        };
+        synth.speak(utterance);
+    }
+});
+
+socket.on('stop_speaking', () => {
+    synth.cancel();
+});
+
+let voiceEnabled = false;
+const voiceToggle = document.getElementById('voice-toggle');
+
+voiceToggle.addEventListener('click', () => {
+    voiceEnabled = !voiceEnabled;
+    voiceToggle.textContent = voiceEnabled ? 'Disable Voice' : 'Enable Voice';
+    if (!voiceEnabled) {
+        synth.cancel();
+    }
+});
+</script>
+
+</body>
+</html>
