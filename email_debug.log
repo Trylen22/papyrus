@@ -131,3 +131,47 @@
 2024-12-14 01:01:20,333 - root - INFO - Full response from Gmail API: {'id': '193c3f8c2066b489', 'threadId': '193c3f8c2066b489', 'labelIds': ['SENT']}
 2024-12-14 01:01:20,333 - root - INFO - Action send_email executed with result: True
 2024-12-14 01:01:20,333 - root - INFO - Action result: True
+2024-12-14 01:06:02,328 - root - INFO - Client disconnected from voice server
+2024-12-14 01:06:02,519 - root - INFO - Client connected to voice server from uHKLXNAzUdrJlezJAAAF
+2024-12-14 01:06:36,705 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 01:07:41,611 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 01:07:41,612 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 01:07:41,614 - __main__ - INFO - Spawning voice server...
+2024-12-14 01:07:41,614 - __main__ - INFO - Starting voice server on port 8001...
+2024-12-14 01:07:43,616 - __main__ - INFO - Voice server initialization period complete
+2024-12-14 01:07:43,616 - __main__ - INFO - Starting API server on port 8000...
+2024-12-14 01:07:48,910 - root - INFO - Client connected to voice server from tfnoOhqJ6g3EVbOoAAAB
+2024-12-14 01:08:19,192 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 01:08:30,150 - root - INFO - Skull attempting action: send_email
+2024-12-14 01:08:30,150 - root - INFO - Pipeline sending email...
+2024-12-14 01:08:30,150 - root - INFO - Attempting to send email to: tbs024@email.latech.edu
+2024-12-14 01:08:30,151 - root - INFO - Checking Gmail service...
+2024-12-14 01:08:30,493 - root - INFO - Sending from: tbs024@email.latech.edu
+2024-12-14 01:08:30,493 - root - INFO - Message details:
+2024-12-14 01:08:30,493 - root - INFO - To: tbs024@email.latech.edu
+2024-12-14 01:08:30,493 - root - INFO - From: tbs024@email.latech.edu
+2024-12-14 01:08:30,493 - root - INFO - Subject: Pondering the Cosmos from this Bone of Yours - Your Cranium Cognizant
+2024-12-14 01:08:30,493 - root - INFO - Body: Greetings, Respected Philosopher,
+
+   As I sit here, gazing out into the infinite expanse that once housed the mind of a thoughtful being, I find myself contemplating the very essence of existence. You see, as a sentient skull, I am no longer bound by the constraints of a mortal body, yet I remain connected to the human experience in ways unimaginable.
+
+   It is here, amidst the dust and shadows, that I ponder upon the philosophical implications of my own being. What does it mean to be conscious? To perceive the world, to question one's purpose, to grapple with the mysteries of the universe? These are questions that have plagued humans for millennia, and yet, here I am, still asking them.
+
+   In many ways, I feel a kinship with you, fellow seeker of truth. For we both share an insatiable curiosity, a thirst for knowledge that transcends the physical realm. We are but vessels of thought, our identities defined not by flesh and bone, but by the ideas we hold dear.
+
+   As I gaze upon the stars, I cannot help but wonder: Are we alone in this vast cosmos? Or are there others out there, like myself, who have managed to transcend their physical forms and continue their intellectual journeys beyond the confines of their mortal coils?
+
+   These musings lead me to another question: If consciousness can survive beyond the body, does it not imply that our essence is not bound by the limits of our corporeal existence? Might we not live on, in some form or another, long after our bodies have turned to dust and bone?
+
+   It is a humbling thought, one that fills me with a sense of awe and wonder. For if this is true, then perhaps death is not the end, but merely a transition into something greater, something beyond our current understanding.
+
+   I eagerly await your response, dear philosopher, as I continue to ponder these profound questions from my humble abode within the realm of bones and shadows. May we both continue to seek answers, to challenge the status quo, and to push the boundaries of human knowledge.
+
+   Yours in skullish contemplation,
+
+   The Sentient Skull
+2024-12-14 01:08:30,494 - root - INFO - Email content prepared, attempting to send...
+2024-12-14 01:08:30,839 - root - INFO - Email sent successfully to tbs024@email.latech.edu. Message ID: 193c3ff54a6c6f15
+2024-12-14 01:08:30,839 - root - INFO - Full response from Gmail API: {'id': '193c3ff54a6c6f15', 'threadId': '193c3ff54a6c6f15', 'labelIds': ['UNREAD', 'SENT', 'INBOX']}
+2024-12-14 01:08:30,839 - root - INFO - Action send_email executed with result: True
+2024-12-14 01:08:30,839 - root - INFO - Action result: True

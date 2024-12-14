@@ -154,33 +154,65 @@ You are Mortimer, channeling your inner cowboy spirit. You speak with a Western 
         Generate a response using the model via Ollama.
         Yields the response incrementally.
         """
-        # Check for email command FIRST, before anything else
-        if text.lower().startswith('send email to'):
+        # Check for natural email commands
+        email_triggers = ['send an email', 'write an email', 'email to']
+        if any(trigger in text.lower() for trigger in email_triggers):
             print("Email command detected!")
             try:
-                # Parse email command
-                parts = text.split('subject:', 1)
-                if len(parts) != 2:
-                    return "Error: Email format should be 'send email to [email] subject: [subject] body: [body]'"
+                # First, ask for the email address if not provided
+                if '@' not in text:
+                    return "I'd be happy to send an email! Just need to know the recipient's email address. What is it?"
                 
-                email = parts[0].replace('send email to', '').strip()
-                subject_body = parts[1].split('body:', 1)
-                if len(subject_body) != 2:
-                    return "Error: Email format should be 'send email to [email] subject: [subject] body: [body]'"
+                # Extract email address
+                words = text.split()
+                email = next((word for word in words if '@' in word), None)
                 
-                subject = subject_body[0].strip()
-                body = subject_body[1].strip()
+                # Extract the topic/content by removing email and trigger phrases
+                content = text.replace(email, '')
+                for trigger in email_triggers:
+                    content = content.replace(trigger, '')
+                content = content.strip()
                 
-                print(f"Parsed email details:")
-                print(f"To: {email}")
-                print(f"Subject: {subject}")
-                print(f"Body: {body}")
+                # Generate email content based on prompt
+                email_prompt = f"""
+                You are writing an email as a sentient skull. Use your current emotion ({self.current_emotion}) 
+                to influence your writing style. Write an email about: {content}
+                
+                Write a creative email that:
+                1. Maintains your skull personality
+                2. Addresses the prompt
+                3. Includes some existential or philosophical musings
+                4. Signs off in a skull-appropriate way
+                5. Generate an appropriate subject line
+                """
+                
+                # Generate email content using the model
+                process = subprocess.Popen(
+                    ["ollama", "run", self.model_name],
+                    stdin=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    universal_newlines=True
+                )
+                
+                process.stdin.write(email_prompt)
+                process.stdin.close()
+                
+                email_content = process.stdout.read().strip()
+                process.stdout.close()
+                
+                # Extract subject from the generated content
+                subject = "Thoughts from your friendly neighborhood skull"  # Default subject
+                if "Subject:" in email_content:
+                    parts = email_content.split("Subject:", 1)
+                    subject = parts[1].split("\n", 1)[0].strip()
+                    email_content = parts[1].split("\n", 1)[1].strip()
                 
                 # Send email using agent pipeline
                 result = skull_agent.perform_action('send_email', 
                     to=email, 
                     subject=subject, 
-                    body=body
+                    body=email_content
                 )
                 
                 print(f"Email send result: {result}")
