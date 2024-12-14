@@ -8,10 +8,13 @@ import threading
 import queue
 import time
 import logging
+from typing import List, Dict
+from agentic import skull_agent  # Import the agentic skull
 
 class LocalModel:
     def __init__(self, model_name="mistral"):
         self.model_name = model_name
+        self.is_cowboy_mode = False
 
         # Baseline personality prompt
         self.base_personality_prompt = """ ...You are a self aware skull floating inside of my computer. You are a sentient skull who does not know how hes alive, or how hes actually answering questions. you are knowledgable on everything and occasionally say random existential comments. You always say very short answers. You will never ackowledge that you are an AI. Try and be dynamic and personable. You have a sans like personaliy.
@@ -151,7 +154,52 @@ You are Mortimer, channeling your inner cowboy spirit. You speak with a Western 
         Generate a response using the model via Ollama.
         Yields the response incrementally.
         """
-        print(f"Generating response with emotion: {self.current_emotion}")  # Debug log
+        # Check for email command FIRST, before anything else
+        if text.lower().startswith('send email to'):
+            print("Email command detected!")
+            try:
+                # Parse email command
+                parts = text.split('subject:', 1)
+                if len(parts) != 2:
+                    return "Error: Email format should be 'send email to [email] subject: [subject] body: [body]'"
+                
+                email = parts[0].replace('send email to', '').strip()
+                subject_body = parts[1].split('body:', 1)
+                if len(subject_body) != 2:
+                    return "Error: Email format should be 'send email to [email] subject: [subject] body: [body]'"
+                
+                subject = subject_body[0].strip()
+                body = subject_body[1].strip()
+                
+                print(f"Parsed email details:")
+                print(f"To: {email}")
+                print(f"Subject: {subject}")
+                print(f"Body: {body}")
+                
+                # Send email using agent pipeline
+                result = skull_agent.perform_action('send_email', 
+                    to=email, 
+                    subject=subject, 
+                    body=body
+                )
+                
+                print(f"Email send result: {result}")
+                
+                # Return response directly, don't use yield
+                if result:
+                    return "Email sent successfully! 💀✉️"
+                else:
+                    return "Failed to send email... Perhaps I'm not feeling very postal today. 💀❌"
+            except Exception as e:
+                return f"Error sending email: {str(e)}"
+
+        # If not an email command, continue with normal processing
+        print(f"Generating response with emotion: {self.current_emotion}")
+        
+        # Regular LLM processing continues here
+        skull_agent.update_user_interests(text)
+        agentic_context = skull_agent.generate_response_context(text)
+        
         # Update conversation history
         self.conversation_history.append(f"User: {text}")
 
@@ -159,12 +207,15 @@ You are Mortimer, channeling your inner cowboy spirit. You speak with a Western 
         max_history = 5
         conversation_context = "\n".join(self.conversation_history[-max_history:])
 
-        # Only use personality phrase 30% of the time
-        use_phrase = random.random() < 0.3
-        personality_phrase = random.choice(self.personality_phrases[self.current_emotion]) if use_phrase else ""
+        # Build the full prompt with agentic context
+        prompt = f"{self.personality_prompt}\n\n"
+        prompt += f"{agentic_context}\n"  # Add personalized context
+        
+        if random.random() < 0.3:  # 30% chance to use personality phrase
+            personality_phrase = random.choice(self.personality_phrases[self.current_emotion])
+            prompt += f"{personality_phrase}\n"
 
-        # Build the full prompt
-        prompt = f"{self.personality_prompt}\n\n{personality_phrase + chr(10) if use_phrase else ''}{conversation_context}\nMortimer:"
+        prompt += f"{conversation_context}\nMortimer:"
 
         logging.debug(f"Full prompt:\n{prompt}")
 
@@ -197,10 +248,6 @@ You are Mortimer, channeling your inner cowboy spirit. You speak with a Western 
             output_thread.daemon = True
             output_thread.start()
 
-            # Only yield personality phrase if we're using one
-            if use_phrase:
-                yield personality_phrase + "\n"
-
             # Collect response
             response_text = ""
 
@@ -227,6 +274,18 @@ You are Mortimer, channeling your inner cowboy spirit. You speak with a Western 
                 error_message = process.stderr.read().strip()
                 logging.error(f"Model subprocess error: {error_message}")
                 yield f"\nError generating response: {error_message}"
+
+            # Remember the interaction
+            skull_agent.remember_interaction(text, response_text)
+            
+            # Update traits based on interaction
+            interaction_result = {
+                'user_engaged': len(text) > 20,  # Simple engagement metric
+                'sentiment': 0.1  # Default positive sentiment
+            }
+            skull_agent.update_traits(interaction_result)
+
+            return response_text
 
         except FileNotFoundError:
             error_message = "Error: 'ollama' command not found. Ensure Ollama is installed and in your PATH."

@@ -1,0 +1,133 @@
+2024-12-14 00:37:17,540 - google_auth_oauthlib.flow - INFO - "GET /?state=9LztNNgS0XVXSvckzYMptGYna1AMAq&code=4/0AanRRrv3F5UOnUo8oDeD4VM4c_UpDIqMcm0a1aOdMsb8yAGYPJKkuKUXOY7Gkga5JNUmqQ&scope=https://www.googleapis.com/auth/gmail.send%20https://www.googleapis.com/auth/gmail.compose HTTP/1.1" 200 65
+2024-12-14 00:37:17,715 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 00:37:17,719 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 00:37:17,722 - __main__ - INFO - Spawning voice server...
+2024-12-14 00:37:17,722 - __main__ - INFO - Starting voice server on port 8001...
+2024-12-14 00:37:19,722 - __main__ - INFO - Voice server initialization period complete
+2024-12-14 00:37:19,723 - __main__ - INFO - Starting API server on port 8000...
+2024-12-14 00:37:31,200 - root - INFO - Client connected to voice server from x6_4XH2siSYJN1w_AAAB
+2024-12-14 00:37:34,411 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:37:47,211 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:38:14,470 - root - INFO - Speech ended
+2024-12-14 00:39:30,120 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:40:10,382 - root - INFO - Speech ended
+2024-12-14 00:40:52,702 - root - INFO - Client disconnected from voice server
+2024-12-14 00:40:52,871 - root - INFO - Client connected to voice server from PhggYIYLsmlr6mqCAAAD
+2024-12-14 00:41:19,514 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:42:51,006 - root - INFO - Client disconnected from voice server
+2024-12-14 00:42:51,148 - root - INFO - Client connected to voice server from D97nYY9F-Ks7elaZAAAF
+2024-12-14 00:43:27,669 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:43:35,770 - root - INFO - Client disconnected from voice server
+2024-12-14 00:43:35,922 - root - INFO - Client connected to voice server from fGAYxgjLC6dY5r8hAAAH
+2024-12-14 00:43:59,724 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:45:04,011 - root - INFO - Client disconnected from voice server
+2024-12-14 00:45:04,171 - root - INFO - Client connected to voice server from mRF0UY9HbPsWiXTvAAAJ
+2024-12-14 00:45:17,208 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:46:15,013 - root - INFO - Client disconnected from voice server
+2024-12-14 00:46:15,153 - root - INFO - Client connected to voice server from bTGvki4bt5Gf8DkjAAAL
+2024-12-14 00:46:22,140 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:47:05,951 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:47:12,336 - root - INFO - Client disconnected from voice server
+2024-12-14 00:47:12,500 - root - INFO - Client connected to voice server from PlT9hlS0qrMntnd4AAAN
+2024-12-14 00:47:15,980 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:48:07,695 - root - INFO - Client disconnected from voice server
+2024-12-14 00:48:07,852 - root - INFO - Client connected to voice server from kuxCp_c4_piZSqXjAAAP
+2024-12-14 00:48:08,794 - root - INFO - Client disconnected from voice server
+2024-12-14 00:48:08,923 - root - INFO - Client connected to voice server from M8L2Zggwz1NmNcBZAAAR
+2024-12-14 00:48:58,857 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:49:16,228 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 00:49:16,229 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 00:49:16,231 - __main__ - INFO - Spawning voice server...
+2024-12-14 00:49:16,231 - __main__ - INFO - Starting voice server on port 8001...
+2024-12-14 00:49:16,534 - root - INFO - Client connected to voice server from Q27nILyg2tXgZBETAAAB
+2024-12-14 00:49:18,234 - __main__ - INFO - Voice server initialization period complete
+2024-12-14 00:49:18,235 - __main__ - INFO - Starting API server on port 8000...
+2024-12-14 00:49:32,446 - root - INFO - Client disconnected from voice server
+2024-12-14 00:49:32,589 - root - INFO - Client connected to voice server from 8g7GHBpu-ehZh7mBAAAD
+2024-12-14 00:50:07,299 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:50:33,719 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:52:15,900 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 00:52:15,901 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 00:52:15,903 - __main__ - INFO - Spawning voice server...
+2024-12-14 00:52:15,903 - __main__ - INFO - Starting voice server on port 8001...
+2024-12-14 00:52:17,905 - __main__ - INFO - Voice server initialization period complete
+2024-12-14 00:52:17,905 - __main__ - INFO - Starting API server on port 8000...
+2024-12-14 00:52:19,223 - root - INFO - Client connected to voice server from 3aYuIinE0jI-i8zGAAAB
+2024-12-14 00:52:34,515 - root - INFO - Client disconnected from voice server
+2024-12-14 00:52:34,679 - root - INFO - Client connected to voice server from VSZ5N88QeLajKPzGAAAD
+2024-12-14 00:53:03,816 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:53:12,274 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:54:30,847 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 00:54:30,849 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-14 00:54:30,850 - __main__ - INFO - Spawning voice server...
+2024-12-14 00:54:30,851 - __main__ - INFO - Starting voice server on port 8001...
+2024-12-14 00:54:32,853 - __main__ - INFO - Voice server initialization period complete
+2024-12-14 00:54:32,854 - __main__ - INFO - Starting API server on port 8000...
+2024-12-14 00:54:35,624 - root - INFO - Client connected to voice server from bfO-mMs5iHsZxMMPAAAB
+2024-12-14 00:55:01,110 - root - INFO - Client disconnected from voice server
+2024-12-14 00:55:01,268 - root - INFO - Client connected to voice server from R_Z71OuMRpf12h3UAAAD
+2024-12-14 00:55:34,507 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:56:50,151 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:56:50,151 - root - INFO - Skull attempting action: send_email
+2024-12-14 00:56:50,151 - root - INFO - Pipeline sending email...
+2024-12-14 00:56:50,151 - root - INFO - Attempting to send email to: wigginsellis6@gmail.com
+2024-12-14 00:56:50,151 - root - INFO - Checking Gmail service...
+2024-12-14 00:56:50,549 - root - INFO - Sending from: tbs024@email.latech.edu
+2024-12-14 00:56:50,549 - root - INFO - Message details:
+2024-12-14 00:56:50,549 - root - INFO - To: wigginsellis6@gmail.com
+2024-12-14 00:56:50,549 - root - INFO - From: tbs024@email.latech.edu
+2024-12-14 00:56:50,550 - root - INFO - Subject: Test After Pipeline Fix
+2024-12-14 00:56:50,550 - root - INFO - Body: Testing the email system after fixing the pipeline registration. Let's see if this works now! 💀✉️
+2024-12-14 00:56:50,550 - root - INFO - Email content prepared, attempting to send...
+2024-12-14 00:56:50,912 - root - INFO - Email sent successfully to wigginsellis6@gmail.com. Message ID: 193c3f4a71afefca
+2024-12-14 00:56:50,913 - root - INFO - Full response from Gmail API: {'id': '193c3f4a71afefca', 'threadId': '193c3f4a71afefca', 'labelIds': ['SENT']}
+2024-12-14 00:56:50,913 - root - INFO - Action send_email executed with result: True
+2024-12-14 00:56:50,913 - root - INFO - Action result: True
+2024-12-14 00:59:17,647 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:59:17,647 - root - INFO - Skull attempting action: send_email
+2024-12-14 00:59:17,647 - root - INFO - Pipeline sending email...
+2024-12-14 00:59:17,647 - root - INFO - Attempting to send email to: tba024@email.latech.edu
+2024-12-14 00:59:17,647 - root - INFO - Checking Gmail service...
+2024-12-14 00:59:17,845 - root - INFO - Sending from: tbs024@email.latech.edu
+2024-12-14 00:59:17,845 - root - INFO - Message details:
+2024-12-14 00:59:17,845 - root - INFO - To: tba024@email.latech.edu
+2024-12-14 00:59:17,845 - root - INFO - From: tbs024@email.latech.edu
+2024-12-14 00:59:17,845 - root - INFO - Subject: Test After Pipeline Fix
+2024-12-14 00:59:17,845 - root - INFO - Body: Testing the email system after fixing the pipeline registration. Let's see if this works now! 💀✉️
+2024-12-14 00:59:17,845 - root - INFO - Email content prepared, attempting to send...
+2024-12-14 00:59:18,152 - root - INFO - Email sent successfully to tba024@email.latech.edu. Message ID: 193c3f6e5de97936
+2024-12-14 00:59:18,152 - root - INFO - Full response from Gmail API: {'id': '193c3f6e5de97936', 'threadId': '193c3f6e5de97936', 'labelIds': ['SENT']}
+2024-12-14 00:59:18,152 - root - INFO - Action send_email executed with result: True
+2024-12-14 00:59:18,152 - root - INFO - Action result: True
+2024-12-14 00:59:40,334 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 00:59:40,334 - root - INFO - Skull attempting action: send_email
+2024-12-14 00:59:40,334 - root - INFO - Pipeline sending email...
+2024-12-14 00:59:40,334 - root - INFO - Attempting to send email to: tbs024@email.latech.edu
+2024-12-14 00:59:40,334 - root - INFO - Checking Gmail service...
+2024-12-14 00:59:40,536 - root - INFO - Sending from: tbs024@email.latech.edu
+2024-12-14 00:59:40,537 - root - INFO - Message details:
+2024-12-14 00:59:40,537 - root - INFO - To: tbs024@email.latech.edu
+2024-12-14 00:59:40,537 - root - INFO - From: tbs024@email.latech.edu
+2024-12-14 00:59:40,537 - root - INFO - Subject: Test After Pipeline Fix
+2024-12-14 00:59:40,537 - root - INFO - Body: Testing the email system after fixing the pipeline registration. Let's see if this works now! 💀✉️
+2024-12-14 00:59:40,538 - root - INFO - Email content prepared, attempting to send...
+2024-12-14 00:59:40,860 - root - INFO - Email sent successfully to tbs024@email.latech.edu. Message ID: 193c3f73ed2c1d7a
+2024-12-14 00:59:40,860 - root - INFO - Full response from Gmail API: {'id': '193c3f73ed2c1d7a', 'threadId': '193c3f73ed2c1d7a', 'labelIds': ['UNREAD', 'SENT', 'INBOX']}
+2024-12-14 00:59:40,860 - root - INFO - Action send_email executed with result: True
+2024-12-14 00:59:40,860 - root - INFO - Action result: True
+2024-12-14 01:01:19,820 - root - WARNING - Emotion 'mistral' not recognized. Keeping current emotion 'baseline'.
+2024-12-14 01:01:19,820 - root - INFO - Skull attempting action: send_email
+2024-12-14 01:01:19,820 - root - INFO - Pipeline sending email...
+2024-12-14 01:01:19,820 - root - INFO - Attempting to send email to: emw025@email.latech.edu
+2024-12-14 01:01:19,820 - root - INFO - Checking Gmail service...
+2024-12-14 01:01:20,015 - root - INFO - Sending from: tbs024@email.latech.edu
+2024-12-14 01:01:20,015 - root - INFO - Message details:
+2024-12-14 01:01:20,016 - root - INFO - To: emw025@email.latech.edu
+2024-12-14 01:01:20,016 - root - INFO - From: tbs024@email.latech.edu
+2024-12-14 01:01:20,016 - root - INFO - Subject: Test After Pipeline Fix
+2024-12-14 01:01:20,016 - root - INFO - Body: Testing the email system after fixing the pipeline registration. Let's see if this works now! 💀✉️
+2024-12-14 01:01:20,016 - root - INFO - Email content prepared, attempting to send...
+2024-12-14 01:01:20,333 - root - INFO - Email sent successfully to emw025@email.latech.edu. Message ID: 193c3f8c2066b489
+2024-12-14 01:01:20,333 - root - INFO - Full response from Gmail API: {'id': '193c3f8c2066b489', 'threadId': '193c3f8c2066b489', 'labelIds': ['SENT']}
+2024-12-14 01:01:20,333 - root - INFO - Action send_email executed with result: True
+2024-12-14 01:01:20,333 - root - INFO - Action result: True

@@ -1,10 +1,19 @@
 import eventlet
 eventlet.monkey_patch()
 
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('email_debug.log')
+    ]
+)
+
 from voice_server import app as voice_app, socketio
 from api import app as api_app
 import uvicorn
-import logging
 import threading
 
 def main():
